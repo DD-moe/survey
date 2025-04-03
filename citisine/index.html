@@ -55,7 +55,104 @@
         </custom-checkbox-group>
     </section>
 
+    <section id="control-questions">
+        <h2>Pytania kontrolne</h2>
+    
+        <!-- Pytanie o korzyści z palenia -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Czy autor badania wspominał o korzyściach z palenia?</h3>
+            <label><input type="checkbox" data-value="1"> Tak</label><br>
+            <label><input type="checkbox" data-value="2"> Nie</label>
+        </custom-checkbox-group>
+    
+        <!-- Pytanie o ilość papierosów -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Czy palenie 2 papierosów dziennie przez 2 lata to więcej niż 2 paczki przez całe 2 lata?</h3>
+            <label><input type="checkbox" data-value="1"> Tak</label><br>
+            <label><input type="checkbox" data-value="2"> Nie</label>
+        </custom-checkbox-group>
+    </section>
+    <section id="survey">
+        <h2>Ankieta</h2>
+    
+        <!-- Pytanie o cytyzynę -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Czy słyszałeś/aś o cytyzynie?</h3>
+            <label><input type="checkbox" data-value="1"> Tak, wiem dokładnie, czym jest</label><br>
+            <label><input type="checkbox" data-value="2"> Tak, coś słyszałem/am</label><br>
+            <label><input type="checkbox" data-value="3"> Nie, nie pierwsze słyszę</label>
+        </custom-checkbox-group>
+    
+        <!-- Pytanie o inne metody leczenia -->
+        <custom-checkbox-group max="1" calc="sum">
+            <!-- Skuteczne metody (punkty dodatnie) -->
+            <label><input type="checkbox" data-value="1"> Terapia behawioralna</label><br>
+            <label><input type="checkbox" data-value="1"> Nikotynowa terapia zastępcza (plaster, guma, tabletki)</label><br>
+            <label><input type="checkbox" data-value="1"> Cytyzyna</label><br>
+            <label><input type="checkbox" data-value="1"> Wareniklina</label><br>
+            <label><input type="checkbox" data-value="1"> Bupropion</label><br>
+            <h3>Jakie inne metody leczenia uzależnienia od papierosów elektronicznych znasz?</h3>
+            <!-- Nieskuteczne lub nieudowodnione metody (punkty ujemne) -->
+            <label><input type="checkbox" data-value="-1"> Homeopatia</label><br>
+            <label><input type="checkbox" data-value="-1"> Akupunktura</label><br>
+            <label><input type="checkbox" data-value="-1"> Hipnoza</label><br>
+            <label><input type="checkbox" data-value="-1"> Terapia ziołowa (np. dziurawiec, melisa)</label><br>
+            <label><input type="checkbox" data-value="-1"> Magnesy antynikotynowe</label><br>
+        </custom-checkbox-group>
+
+        <!-- Przycisk przechodzenia dalej -->
+        <button id="nextButton">Przejdź dalej</button>
+    
+        <!-- Sekcja ukrytych pytań -->
+        <div id="extraQuestions" style="display: none; margin-top: 20px;">
+            <h3>Wybierz częste działania niepożądane cytyzyny</h3>
+            <custom-checkbox-group max="4" calc="sum">
+                <label><input type="checkbox" data-value="1"> Nudności</label><br>
+                <label><input type="checkbox" data-value="1"> Bóle głowy</label><br>
+                <label><input type="checkbox" data-value="1"> Suchość w ustach</label><br>
+                <label><input type="checkbox" data-value="-1"> Wzrost masy ciała</label><br>
+                <label><input type="checkbox" data-value="-1"> Poprawa pamięci</label>
+            </custom-checkbox-group>
+    
+            <h3>Jaka jest skuteczność cytyzyny? (Ile osób rzuca palenie?)</h3>
+            <custom-checkbox-group max="1" calc="max">
+                <label><input type="checkbox" data-value="1"> Około 40%</label><br>
+                <label><input type="checkbox" data-value="-1"> Około 10%</label><br>
+                <label><input type="checkbox" data-value="-1"> Ponad 80%</label>
+            </custom-checkbox-group>
+    
+            <h3>Ile miesięcy trwa leczenie cytyzyną?</h3>
+            <custom-checkbox-group max="1" calc="max">
+                <label><input type="checkbox" data-value="1"> 1 miesiąc</label><br>
+                <label><input type="checkbox" data-value="-1"> 3 miesiące</label><br>
+                <label><input type="checkbox" data-value="-1"> 6 miesięcy</label>
+            </custom-checkbox-group>
+    
+            <h3>Jaki jest zakres cenowy kuracji cytyzyną?</h3>
+            <custom-checkbox-group max="1" calc="max">
+                <label><input type="checkbox" data-value="1"> 50 - 150 zł</label><br>
+                <label><input type="checkbox" data-value="-1"> 200 - 400 zł</label><br>
+                <label><input type="checkbox" data-value="-1"> Powyżej 500 zł</label>
+            </custom-checkbox-group>
+    
+            <h3>Wybierz nazwy produktów zawierających cytyzynę</h3>
+            <custom-checkbox-group max="3" calc="sum">
+                <label><input type="checkbox" data-value="1"> Tabex</label><br>
+                <label><input type="checkbox" data-value="1"> Desmoxan</label><br>
+                <label><input type="checkbox" data-value="-1"> Champix</label><br>
+                <label><input type="checkbox" data-value="-1"> Nicorette</label>
+            </custom-checkbox-group>
+        </div>
+    </section>
+    
     <footer>
         <p>&copy; Damian Bezara 2025. Wszelkie prawa zastrzeżone.</p>
     </footer>
+
+    <script>
+        document.getElementById("nextButton").addEventListener("click", function() {
+            document.getElementById("extraQuestions").style.display = "block";
+            this.style.display = "none"; // Ukrywa przycisk po kliknięciu
+        });
+    </script>
 </body>
