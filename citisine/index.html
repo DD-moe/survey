@@ -178,7 +178,7 @@
             groups.forEach(group => {
                 // Zdobądź data-name i answear z elementów wewnętrznych custom-checkbox-group
                 const dataName = group.getAttribute('data-name');
-                const answear = group.getAttribute('answear');  // Zakładając, że answear jest atrybutem
+                const answear = group.answear;
 
                 if (dataName && answear !== undefined) {
                 answers[dataName] = answear;  // Dodajemy do obiektu z odpowiedziami
