@@ -7,8 +7,8 @@
     <meta name="description" content="Ankieta do oceny świadomości społecznej o cytyzynie.">
     <meta name="keywords" content="Cytyzyna, palenie, papierosy elektroniczne, leczenie uzależnienia">
     <title>Ankieta świadomości cytyzyny jako substancji leczniczej</title>
-    <script type="module" src="https://git.1ioe.top/HL/components/interview.js" blocking="render" data-opis="utility components"></script>
-    <script type="module" src="https://git.1ioe.top/HL/components/forms.js" blocking="render" data-opis="tools components"></script>
+    <script type="module" src="https://utils.1ioe.top/interview.js" blocking="render" data-opis="utility components"></script>
+    <script type="module" src="https://utils.1ioe.top/forms.js" blocking="render" data-opis="tools components"></script>
     <style>
         custom-checkbox-group[part="result"] {
             display: none;
@@ -89,7 +89,7 @@
         </custom-checkbox-group>
     
         <!-- Pytanie o inne metody leczenia -->
-        <custom-checkbox-group max="1" calc="sum">
+        <custom-checkbox-group max="3" calc="sum">
             <!-- Skuteczne metody (punkty dodatnie) -->
             <label><input type="checkbox" data-value="1"> Terapia behawioralna</label><br>
             <label><input type="checkbox" data-value="1"> Nikotynowa terapia zastępcza (plaster, guma, tabletki)</label><br>
@@ -158,7 +158,7 @@
         document.getElementById("nextButton").addEventListener("click", function() {
             const answers = getAnswers();
             const isEmpty = hasEmptyAnswer(answers);
-
+            console.log(isEmpty);
             if (!isEmpty) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
                 const answear = document.getElementById("knowledge").answear;
 
