@@ -9,6 +9,9 @@
     <title>Ankieta świadomości cytyzyny jako substancji leczniczej</title>
     <script type="module" src="https://utils.1ioe.top/interview.js" blocking="render" data-opis="utility components"></script>
     <script type="module" src="https://utils.1ioe.top/forms.js" blocking="render" data-opis="tools components"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://survey.1ioe.top/survey.js"></script>    
     <style>
         custom-checkbox-group::part(result) {
             display: none;
@@ -149,7 +152,8 @@
             </custom-checkbox-group>
         </div>
     </section>
-    
+        <!-- Przycisk przechodzenia dalej -->
+        <button id="send">Wyślij</button>    
     <footer>
         <p>&copy; Damian Bezara 2025. Wszelkie prawa zastrzeżone.</p>
     </footer>
@@ -158,7 +162,6 @@
         document.getElementById("nextButton").addEventListener("click", function() {
             const answers = getAnswers('main');
             const isEmpty = hasEmptyAnswer(answers);
-            console.log(answers);
             if (!isEmpty) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
                 const answear = document.getElementById("knowledge").answear;
 
@@ -168,6 +171,16 @@
                 }
             }
         });
+
+        document.getElementById("send").addEventListener("click", async function() {
+            const answers1 = getAnswers('main');
+            const isEmpty1 = hasEmptyAnswer(answers);
+            const answers2 = getAnswers('conscious');
+            const isEmpty2 = hasEmptyAnswer(answers);            
+            if (!isEmpty1 && !isEmpty2) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
+                //send({...answers1, ...answers2}, command);
+            }
+        });        
 
         function getAnswers(group) {
             const answers = {};
