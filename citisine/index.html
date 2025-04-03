@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="[Damian Bezara]">
+    <meta name="description" content="Ankieta do oceny świadomości społecznej o cytyzynie.">
+    <meta name="keywords" content="Cytyzyna, palenie, papierosy elektroniczne, leczenie uzależnienia">
+    <title>Formularz CTCAE dla HL</title>
+    <script type="module" src="https://git.1ioe.top/HL/components/interview.js" blocking="render" data-opis="utility components"></script>
+    <script type="module" src="https://git.1ioe.top/HL/components/forms.js" blocking="render" data-opis="tools components"></script>
+</head>
+<header>
+    <h1>Formularz CTCAE dla HL</h1>
+    <rodo-consent url="https://survey.1ioe.top/citisine/rodo.html"><div></div></rodo-consent>
+</header>
+<body>
+    <section id="survey">
+        <h2>Metryczka</h2>
+    
+        <!-- Wiek -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Wiek</h3>
+            <label><input type="checkbox" data-value="1"> Mniej niż 25 lat</label><br>
+            <label><input type="checkbox" data-value="2"> 25 - 34 lata</label><br>
+            <label><input type="checkbox" data-value="3"> 35 - 44 lata</label><br>
+            <label><input type="checkbox" data-value="4"> 45 lat i więcej</label>
+        </custom-checkbox-group>
+    
+        <!-- Płeć -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Płeć</h3>
+            <label><input type="checkbox" data-value="1"> Mężczyzna</label><br>
+            <label><input type="checkbox" data-value="2"> Kobieta</label><br>
+            <label><input type="checkbox" data-value="3"> Nie chcę podawać / Inna</label>
+        </custom-checkbox-group>
+    
+        <!-- Miejsce zamieszkania -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Miejsce zamieszkania</h3>
+            <label><input type="checkbox" data-value="1"> Miejscowość < 1000 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="2"> 1000 - 4999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="3"> 5000 - 19 999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="4"> 20 000 - 99 999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="5"> 100 000 i więcej</label>
+        </custom-checkbox-group>
+    
+        <!-- Zatrudnienie -->
+        <custom-checkbox-group max="1" calc="max">
+            <h3>Status zawodowy</h3>
+            <label><input type="checkbox" data-value="1"> Nie pracuję i nie uczę się</label><br>
+            <label><input type="checkbox" data-value="2"> Pracuję</label><br>
+            <label><input type="checkbox" data-value="3"> Uczę się</label><br>
+            <label><input type="checkbox" data-value="4"> Łączę pracę z nauką</label>
+        </custom-checkbox-group>
+    </section>
+
+    <footer>
+        <p>&copy; Damian Bezara 2025. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
