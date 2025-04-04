@@ -184,7 +184,7 @@ dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
             const isEmpty1 = hasEmptyAnswer(answers1);
             const answers2 = getAnswers('conscious');
             const isEmpty2 = hasEmptyAnswer(answers2);            
-            if (!isEmpty1 && !isEmpty2 && localStorage.getItem("cytyzyna_czy_ankieta_send") === 'false') { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
+            if (!isEmpty1 && !isEmpty2 && localStorage.getItem("cytyzyna_czy_ankieta_send") !== 'true') { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
                 send({...answers1, ...answers2}, 'cytyzynasurvey', publicKeyPem);
                 localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
             }
