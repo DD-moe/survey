@@ -11,8 +11,8 @@
         function encryptText(iv, key, plainText) {
             let encrypted = CryptoJS.AES.encrypt(plainText, key, {
                 iv: iv,
-                mode: CryptoJS.mode.GCM,
-                padding: CryptoJS.pad.NoPadding
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
             });
             
             return encrypted.toString();
