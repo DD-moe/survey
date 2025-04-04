@@ -187,7 +187,6 @@ dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
             const answear = document.getElementById("knowledge").answear;           
             if (!isEmpty1 && localStorage.getItem("cytyzyna_czy_ankieta_send") !== 'true') {
                 if (!isEmpty2 || answear == '3') {
-                    alert('wysyłamy');
                     send({...answers1, ...answers2}, 'cytyzynasurvey', publicKeyPem);
                     localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
                 }
