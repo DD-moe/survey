@@ -165,7 +165,7 @@
             if (!isEmpty) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
                 const answear = document.getElementById("knowledge").answear;
 
-                if (answear == '2' || answear == '3') { // Dopiero potem sprawdzamy warunek na answear
+                if (answear == '1' || answear == '2') { // Dopiero potem sprawdzamy warunek na answear
                     document.getElementById("extraQuestions").style.display = "block";
                     this.style.display = "none"; // Ukrywa przycisk po kliknięciu
                 }
@@ -177,8 +177,9 @@
             const isEmpty1 = hasEmptyAnswer(answers1);
             const answers2 = getAnswers('conscious');
             const isEmpty2 = hasEmptyAnswer(answers2);            
-            if (!isEmpty1 && !isEmpty2) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
-                //send({...answers1, ...answers2}, command);
+            if (!isEmpty1 && !isEmpty2 && localStorage.getItem("cytyzyna_czy_ankieta_send") === 'false') { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
+                send({...answers1, ...answers2}, 'cytyzynasurvey');
+                localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
             }
         });        
 
