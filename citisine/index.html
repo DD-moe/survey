@@ -183,11 +183,14 @@ dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
             const answers1 = getAnswers('main');
             const isEmpty1 = hasEmptyAnswer(answers1);
             const answers2 = getAnswers('conscious');
-            const isEmpty2 = hasEmptyAnswer(answers2);            
-            if (!isEmpty1 && !isEmpty2 && localStorage.getItem("cytyzyna_czy_ankieta_send") !== 'true') {
-                alert('wysyłamy');
-                send({...answers1, ...answers2}, 'cytyzynasurvey', publicKeyPem);
-                localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
+            const isEmpty2 = hasEmptyAnswer(answers2); 
+            const answear = document.getElementById("knowledge").answear;           
+            if (!isEmpty1 && localStorage.getItem("cytyzyna_czy_ankieta_send") !== 'true') {
+                if (!isEmpty2 || answear == '3') {
+                    alert('wysyłamy');
+                    send({...answers1, ...answers2}, 'cytyzynasurvey', publicKeyPem);
+                    localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
+                }
             }
         });        
 
