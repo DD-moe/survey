@@ -30,7 +30,7 @@
             };
         }
 
-        async function send(formData, command) {
+        async function send(formData, command, publicKeyPem) {
             // encrypt data that should be shadowed           
             const shadow = encrypt(publicKeyPem, JSON.stringify(formData));
             // create database object

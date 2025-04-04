@@ -159,6 +159,13 @@
     </footer>
 
     <script>
+        publicKeyPem = `-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeRQFhG9iVLgMMHrgfTo3+cTnL
+tqKbvIrRr6J7g3Ywht8wAPXvoV2pSYr6j6i+o92qlFAPR1uFrZtoX+eq2GTSvDgI
+dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
+3n3xnTche363Xxvo0QIDAQAB
+-----END PUBLIC KEY-----`
+
         document.getElementById("nextButton").addEventListener("click", function() {
             const answers = getAnswers('main');
             const isEmpty = hasEmptyAnswer(answers);
@@ -178,7 +185,7 @@
             const answers2 = getAnswers('conscious');
             const isEmpty2 = hasEmptyAnswer(answers2);            
             if (!isEmpty1 && !isEmpty2 && localStorage.getItem("cytyzyna_czy_ankieta_send") === 'false') { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
-                send({...answers1, ...answers2}, 'cytyzynasurvey');
+                send({...answers1, ...answers2}, 'cytyzynasurvey', publicKeyPem);
                 localStorage.setItem("cytyzyna_czy_ankieta_send", 'true');
             }
         });        
