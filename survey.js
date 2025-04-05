@@ -53,4 +53,31 @@
             } else {
                 alert(data.error);
             }
-        }        
+        }
+        
+        async function send_raw(record, command) {
+
+            // stringify object
+            const output = JSON.stringify(record);
+
+            const response = await fetch(`https://frog01-21435.wykr.es/${command}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: output
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message);
+            } else {
+                alert(data.error);
+            }
+        }             
+
+        function getHash() {
+            return window.location.hash.substring(1); // Usuwa '#' z początku
+        }
+        

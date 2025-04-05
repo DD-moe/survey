@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="[Damian Bezara]">
+    <meta name="description" content="Ankieta do oceny świadomości społecznej o cytyzynie.">
+    <meta name="keywords" content="Cytyzyna, palenie, papierosy elektroniczne, leczenie uzależnienia">
+    <title>Ankieta świadomości cytyzyny jako substancji leczniczej</title>
+    <script type="module" src="https://utils.1ioe.top/interview.js" blocking="render" data-opis="utility components"></script>
+    <script type="module" src="https://utils.1ioe.top/forms.js" blocking="render" data-opis="tools components"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://survey.1ioe.top/survey.js"></script>    
+    <style>
+        custom-checkbox-group::part(result) {
+            display: none;
+        }
+    </style>
+</head>
+<header>
+    <h1>Ankieta świadomości cytyzyny jako substancji leczniczej</h1>
+    <rodo-consent url="https://survey.1ioe.top/cytyzyna/rodo.html"><div></div></rodo-consent>
+</header>
+<body>
+    <section id="survey">
+        <h2>Metryczka</h2>
+    
+        <!-- Wiek -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="wiek">
+            <h3>Wiek</h3>
+            <label><input type="checkbox" data-value="1"> Mniej niż 25 lat</label><br>
+            <label><input type="checkbox" data-value="2"> 25 - 34 lata</label><br>
+            <label><input type="checkbox" data-value="3"> 35 - 44 lata</label><br>
+            <label><input type="checkbox" data-value="4"> 45 lat i więcej</label>
+        </custom-checkbox-group>
+    
+        <!-- Płeć -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="płeć">
+            <h3>Płeć</h3>
+            <label><input type="checkbox" data-value="1"> Mężczyzna</label><br>
+            <label><input type="checkbox" data-value="2"> Kobieta</label><br>
+            <label><input type="checkbox" data-value="3"> Nie chcę podawać / Inna</label>
+        </custom-checkbox-group>
+    
+        <!-- Miejsce zamieszkania -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="zamieszkanie">
+            <h3>Miejsce zamieszkania</h3>
+            <label><input type="checkbox" data-value="1"> Miejscowość < 1000 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="2"> 1000 - 4999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="3"> 5000 - 19 999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="4"> 20 000 - 99 999 mieszkańców</label><br>
+            <label><input type="checkbox" data-value="5"> 100 000 i więcej</label>
+        </custom-checkbox-group>
+    
+        <!-- Zatrudnienie -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="praca">
+            <h3>Status zawodowy</h3>
+            <label><input type="checkbox" data-value="1"> Nie pracuję i nie uczę się</label><br>
+            <label><input type="checkbox" data-value="2"> Pracuję</label><br>
+            <label><input type="checkbox" data-value="3"> Uczę się</label><br>
+            <label><input type="checkbox" data-value="4"> Łączę pracę z nauką</label>
+        </custom-checkbox-group>
+    </section>
+
+    <section id="control-questions">
+        <h2>Pytania kontrolne</h2>
+    
+        <!-- Pytanie o korzyści z palenia -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="kontrola1">
+            <h3>Czy autor badania wspominał o korzyściach z palenia?</h3>
+            <label><input type="checkbox" data-value="1"> Tak</label><br>
+            <label><input type="checkbox" data-value="2"> Nie</label>
+        </custom-checkbox-group>
+    
+        <!-- Pytanie o ilość papierosów -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="kontrola2">
+            <h3>Czy palenie 2 papierosów dziennie przez 2 lata to więcej niż 2 paczki przez całe 2 lata?</h3>
+            <label><input type="checkbox" data-value="1"> Tak</label><br>
+            <label><input type="checkbox" data-value="2"> Nie</label>
+        </custom-checkbox-group>
+    </section>
+    <section id="survey">
+        <h2>Ankieta</h2>
+    
+        <!-- Pytanie o cytyzynę -->
+        <custom-checkbox-group max="1" calc="max" id="knowledge" data-group="main" data-name="znajomość_cytyzyny">
+            <h3>Czy słyszałeś/aś o cytyzynie?</h3>
+            <label><input type="checkbox" data-value="1"> Tak, wiem dokładnie, czym jest</label><br>
+            <label><input type="checkbox" data-value="2"> Tak, coś słyszałem/am</label><br>
+            <label><input type="checkbox" data-value="3"> Nie, nie pierwsze słyszę</label>
+        </custom-checkbox-group>
+    
+        <!-- Pytanie o inne metody leczenia -->
+        <custom-checkbox-group max="3" calc="sum" data-group="main" data-name="inne_terapie">
+            <!-- Skuteczne metody (punkty dodatnie) -->
+            <label><input type="checkbox" data-value="1"> Terapia behawioralna</label><br>
+            <label><input type="checkbox" data-value="1"> Nikotynowa terapia zastępcza (plaster, guma, tabletki)</label><br>
+            <label><input type="checkbox" data-value="1"> Cytyzyna</label><br>
+            <label><input type="checkbox" data-value="1"> Wareniklina</label><br>
+            <label><input type="checkbox" data-value="1"> Bupropion</label><br>
+            <h3>Jakie inne metody leczenia uzależnienia od papierosów elektronicznych znasz?</h3>
+            <!-- Nieskuteczne lub nieudowodnione metody (punkty ujemne) -->
+            <label><input type="checkbox" data-value="-1"> Homeopatia</label><br>
+            <label><input type="checkbox" data-value="-1"> Akupunktura</label><br>
+            <label><input type="checkbox" data-value="-1"> Hipnoza</label><br>
+            <label><input type="checkbox" data-value="-1"> Terapia ziołowa (np. dziurawiec, melisa)</label><br>
+            <label><input type="checkbox" data-value="-1"> Magnesy antynikotynowe</label><br>
+        </custom-checkbox-group>
+
+        <!-- Przycisk przechodzenia dalej -->
+        <button id="nextButton">Przejdź dalej</button>
+    
+        <!-- Sekcja ukrytych pytań -->
+        <div id="extraQuestions" style="display: none; margin-top: 20px;">
+            <h3>Wybierz częste działania niepożądane cytyzyny</h3>
+            <custom-checkbox-group max="4" calc="sum" data-group="conscious" data-name="działania_nieporządane">
+                <label><input type="checkbox" data-value="1"> Nudności</label><br>
+                <label><input type="checkbox" data-value="1"> Bóle głowy</label><br>
+                <label><input type="checkbox" data-value="1"> Suchość w ustach</label><br>
+                <label><input type="checkbox" data-value="-1"> Wzrost masy ciała</label><br>
+                <label><input type="checkbox" data-value="-1"> Poprawa pamięci</label>
+            </custom-checkbox-group>
+    
+            <h3>Jaka jest skuteczność cytyzyny? (Ile osób rzuca palenie?)</h3>
+            <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="skuteczność">
+                <label><input type="checkbox" data-value="1"> Około 40%</label><br>
+                <label><input type="checkbox" data-value="-1"> Około 10%</label><br>
+                <label><input type="checkbox" data-value="-1"> Ponad 80%</label>
+            </custom-checkbox-group>
+    
+            <h3>Ile miesięcy trwa leczenie cytyzyną?</h3>
+            <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="czas_terapii">
+                <label><input type="checkbox" data-value="1"> 1 miesiąc</label><br>
+                <label><input type="checkbox" data-value="-1"> 3 miesiące</label><br>
+                <label><input type="checkbox" data-value="-1"> 6 miesięcy</label>
+            </custom-checkbox-group>
+    
+            <h3>Jaki jest zakres cenowy kuracji cytyzyną?</h3>
+            <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="koszt_terapii">
+                <label><input type="checkbox" data-value="1"> 50 - 150 zł</label><br>
+                <label><input type="checkbox" data-value="-1"> 200 - 400 zł</label><br>
+                <label><input type="checkbox" data-value="-1"> Powyżej 500 zł</label>
+            </custom-checkbox-group>
+    
+            <h3>Wybierz nazwy produktów zawierających cytyzynę</h3>
+            <custom-checkbox-group max="3" calc="sum" data-group="conscious" data-name="leki_z_cytyzyną">
+                <label><input type="checkbox" data-value="1"> Tabex</label><br>
+                <label><input type="checkbox" data-value="1"> Desmoxan</label><br>
+                <label><input type="checkbox" data-value="-1"> Champix</label><br>
+                <label><input type="checkbox" data-value="-1"> Nicorette</label>
+            </custom-checkbox-group>
+        </div>
+    </section>
+        <!-- Przycisk przechodzenia dalej -->
+        <button id="send">Wyślij</button>    
+    <footer>
+        <p>&copy; Damian Bezara 2025. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        publicKeyPem = `-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeRQFhG9iVLgMMHrgfTo3+cTnL
+tqKbvIrRr6J7g3Ywht8wAPXvoV2pSYr6j6i+o92qlFAPR1uFrZtoX+eq2GTSvDgI
+dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
+3n3xnTche363Xxvo0QIDAQAB
+-----END PUBLIC KEY-----`
+
+        document.getElementById("nextButton").addEventListener("click", function() {
+            const answers = getAnswers('main');
+            const isEmpty = hasEmptyAnswer(answers);
+            if (!isEmpty) { // Najpierw sprawdzamy, czy odpowiedzi nie są puste
+                const answear = document.getElementById("knowledge").answear;
+
+                if (answear == '1' || answear == '2') { // Dopiero potem sprawdzamy warunek na answear
+                    document.getElementById("extraQuestions").style.display = "block";
+                    this.style.display = "none"; // Ukrywa przycisk po kliknięciu
+                }
+            }
+        });
+
+        document.getElementById("send").addEventListener("click", async function() {
+            const answers1 = getAnswers('main');
+            const isEmpty1 = hasEmptyAnswer(answers1);
+            const answers2 = getAnswers('conscious');
+            const isEmpty2 = hasEmptyAnswer(answers2); 
+            const answear = document.getElementById("knowledge").answear;           
+            if (!isEmpty1) {
+                if (!isEmpty2 || answear == '3') {
+                    // encrypt data that should be shadowed           
+                    const shadow = encrypt(publicKeyPem, JSON.stringify({...answers1, ...answers2}));
+                    // create database object
+                    const record = {shadow: shadow, id: getHash()};
+                    send_raw(record, 'cytyzynasurvey_v2');
+                }
+            }
+        });        
+
+        function getAnswers(group) {
+            const answers = {};
+
+            // Znajdujemy wszystkie elementy custom-checkbox-group z data-group="main"
+            const groups = document.querySelectorAll(`custom-checkbox-group[data-group="${group}"]`);
+
+            groups.forEach(group => {
+                // Zdobądź data-name i answear z elementów wewnętrznych custom-checkbox-group
+                const dataName = group.getAttribute('data-name');
+                const answear = group.answear;
+
+                if (dataName && answear !== undefined) {
+                answers[dataName] = answear;  // Dodajemy do obiektu z odpowiedziami
+                }
+            });
+
+            return answers;
+        }
+        function hasEmptyAnswer(answers) {
+            // Sprawdzamy, czy jakikolwiek klucz w obiekcie ma wartość ''
+            for (let key in answers) {
+                if (answers[key] === '') {
+                return true;  // Zwracamy true, jeśli znajdziemy pustą odpowiedź
+                }
+            }
+            return false;  // Zwracamy false, jeśli nie znaleziono pustych odpowiedzi
+        }
+
+    </script>
+</body>
