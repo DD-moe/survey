@@ -8,6 +8,9 @@ body {
 
 header {
     background-color: #4CAF50;
+}
+
+#title{
     color: white;
     padding: 20px;
     text-align: center;
