@@ -20,7 +20,7 @@
     </style>
 </head>
 <header>
-    <h1 id="title">Ankieta świadomości cytyzyny jako substancji leczniczej</h1>
+    <h1 id="title">Ocena świadomości społecznej dotyczącej terapii antynikotynowej</h1>
     <rodo-consent url="https://survey.1ioe.top/cytyzyna/rodo.html"><div></div></rodo-consent>
 </header>
 <body>
@@ -29,7 +29,7 @@
     
         <!-- Wiek -->
         <custom-checkbox-group max="1" calc="max" data-group="main" data-name="wiek">
-            <h3>Wiek</h3>
+            <h3>Wiek <span>(zaznacz 1 odpowiedź)</span></h3>
             <label><input type="checkbox" data-value="1"> Mniej niż 25 lat</label><br>
             <label><input type="checkbox" data-value="2"> 25 - 34 lata</label><br>
             <label><input type="checkbox" data-value="3"> 35 - 44 lata</label><br>
@@ -38,7 +38,7 @@
     
         <!-- Płeć -->
         <custom-checkbox-group max="1" calc="max" data-group="main" data-name="płeć">
-            <h3>Płeć</h3>
+            <h3>Płeć <span>(zaznacz 1 odpowiedź)</span></h3>
             <label><input type="checkbox" data-value="1"> Mężczyzna</label><br>
             <label><input type="checkbox" data-value="2"> Kobieta</label><br>
             <label><input type="checkbox" data-value="3"> Nie chcę podawać / Inna</label>
@@ -46,7 +46,7 @@
     
         <!-- Miejsce zamieszkania -->
         <custom-checkbox-group max="1" calc="max" data-group="main" data-name="zamieszkanie">
-            <h3>Miejsce zamieszkania</h3>
+            <h3>Miejsce zamieszkania <span>(zaznacz 1 odpowiedź)</span></h3>
             <label><input type="checkbox" data-value="1"> Miejscowość < 1000 mieszkańców</label><br>
             <label><input type="checkbox" data-value="2"> 1000 - 4999 mieszkańców</label><br>
             <label><input type="checkbox" data-value="3"> 5000 - 19 999 mieszkańców</label><br>
@@ -56,7 +56,7 @@
     
         <!-- Zatrudnienie -->
         <custom-checkbox-group max="1" calc="max" data-group="main" data-name="praca">
-            <h3>Status zawodowy</h3>
+            <h3>Status zawodowy <span>(zaznacz 1 odpowiedź)</span></h3>
             <label><input type="checkbox" data-value="1"> Nie pracuję i nie uczę się</label><br>
             <label><input type="checkbox" data-value="2"> Pracuję</label><br>
             <label><input type="checkbox" data-value="3"> Uczę się</label><br>
@@ -64,49 +64,44 @@
         </custom-checkbox-group>
     </section>
 
-    <section id="control-questions">
-        <h2>Pytania kontrolne</h2>
-    
+    <section id="survey">
+        <h2>Część właściwa</h2>
+
         <!-- Pytanie o korzyści z palenia -->
         <custom-checkbox-group max="1" calc="max" data-group="main" data-name="kontrola1">
-            <h3>Czy autor badania wspominał o korzyściach z palenia?</h3>
+            <h3>Czy autor badania wspominał o korzyściach z palenia? <span>(zaznacz 1 odpowiedź)</span></h3>
             <label><input type="checkbox" data-value="1"> Tak</label><br>
             <label><input type="checkbox" data-value="2"> Nie</label>
-        </custom-checkbox-group>
-    
-        <!-- Pytanie o ilość papierosów -->
-        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="kontrola2">
-            <h3>Czy palenie 2 papierosów dziennie przez 2 lata to więcej niż 2 paczki przez całe 2 lata?</h3>
-            <label><input type="checkbox" data-value="1"> Tak</label><br>
-            <label><input type="checkbox" data-value="2"> Nie</label>
-        </custom-checkbox-group>
-    </section>
-    <section id="survey">
-        <h2>Ankieta</h2>
-    
-        <!-- Pytanie o cytyzynę -->
-        <custom-checkbox-group max="1" calc="max" id="knowledge" data-group="main" data-name="znajomość_cytyzyny">
-            <h3>Czy słyszałeś/aś o cytyzynie?</h3>
-            <label><input type="checkbox" data-value="1"> Tak, wiem dokładnie, czym jest</label><br>
-            <label><input type="checkbox" data-value="2"> Tak, coś słyszałem/am</label><br>
-            <label><input type="checkbox" data-value="3"> Nie, nie pierwsze słyszę</label>
-        </custom-checkbox-group>
+        </custom-checkbox-group>   
     
         <!-- Pytanie o inne metody leczenia -->
         <custom-checkbox-group max="3" calc="sum" data-group="main" data-name="inne_terapie">
-            <!-- Skuteczne metody (punkty dodatnie) -->
+            <h3>Jakie metody leczenia uzależnienia od papierosów elektronicznych znasz? <span>(zaznacz max. 3 odpowiedzi)</span></h3>
             <label><input type="checkbox" data-value="1"> Terapia behawioralna</label><br>
             <label><input type="checkbox" data-value="1"> Nikotynowa terapia zastępcza (plaster, guma, tabletki)</label><br>
-            <label><input type="checkbox" data-value="1"> Cytyzyna</label><br>
-            <label><input type="checkbox" data-value="1"> Wareniklina</label><br>
-            <label><input type="checkbox" data-value="1"> Bupropion</label><br>
-            <h3>Jakie inne metody leczenia uzależnienia od papierosów elektronicznych znasz?</h3>
-            <!-- Nieskuteczne lub nieudowodnione metody (punkty ujemne) -->
             <label><input type="checkbox" data-value="-1"> Homeopatia</label><br>
-            <label><input type="checkbox" data-value="-1"> Akupunktura</label><br>
-            <label><input type="checkbox" data-value="-1"> Hipnoza</label><br>
+            <label><input type="checkbox" data-value="-1"> Sertralina</label><br>            
+            <label><input type="checkbox" data-value="1"> Cytyzyna</label><br>
+            <label><input type="checkbox" data-value="-1"> Diklofenak</label><br>
+            <label><input type="checkbox" data-value="1"> Wareniklina</label><br>
+            <label><input type="checkbox" data-value="-1"> Yerba mate</label><br>
+            <label><input type="checkbox" data-value="1"> Bupropion</label><br>
             <label><input type="checkbox" data-value="-1"> Terapia ziołowa (np. dziurawiec, melisa)</label><br>
-            <label><input type="checkbox" data-value="-1"> Magnesy antynikotynowe</label><br>
+        </custom-checkbox-group>
+
+        <!-- Pytanie o ilość papierosów -->
+        <custom-checkbox-group max="1" calc="max" data-group="main" data-name="kontrola2">
+            <h3>Czy palenie 2 papierosów dziennie przez 2 lata to więcej niż 2 paczki przez całe 2 lata? <span>(zaznacz 1 odpowiedź)</span></h3>
+            <label><input type="checkbox" data-value="1"> Tak</label><br>
+            <label><input type="checkbox" data-value="2"> Nie</label>
+        </custom-checkbox-group>
+
+        <!-- Pytanie o cytyzynę -->
+        <custom-checkbox-group max="1" calc="max" id="knowledge" data-group="main" data-name="znajomość_cytyzyny">
+            <h3>Czy słyszałeś/aś o cytyzynie? <span>(zaznacz 1 odpowiedź)</span></h3>
+            <label><input type="checkbox" data-value="1"> Tak, wiem dokładnie, czym jest</label><br>
+            <label><input type="checkbox" data-value="2"> Tak, coś słyszałem/am</label><br>
+            <label><input type="checkbox" data-value="3"> Nie, nie pierwsze słyszę</label>
         </custom-checkbox-group>
 
         <!-- Przycisk przechodzenia dalej -->
@@ -114,8 +109,8 @@
     
         <!-- Sekcja ukrytych pytań -->
         <div id="extraQuestions" style="display: none; margin-top: 20px;">
-            <h3>Wybierz częste działania niepożądane cytyzyny</h3>
             <custom-checkbox-group max="4" calc="sum" data-group="conscious" data-name="działania_nieporządane">
+                <h3>Wybierz częste działania niepożądane cytyzyny <span>(zaznacz max. 4 odpowiedzi)</span></h3>
                 <label><input type="checkbox" data-value="1"> Nudności</label><br>
                 <label><input type="checkbox" data-value="1"> Bóle głowy</label><br>
                 <label><input type="checkbox" data-value="1"> Suchość w ustach</label><br>
@@ -123,29 +118,29 @@
                 <label><input type="checkbox" data-value="-1"> Poprawa pamięci</label>
             </custom-checkbox-group>
     
-            <h3>Jaka jest skuteczność cytyzyny? (Ile osób rzuca palenie?)</h3>
             <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="skuteczność">
+                <h3>Jaka jest skuteczność cytyzyny? (Ile osób rzuca palenie?) <span>(zaznacz 1 odpowiedź)</span></h3>
                 <label><input type="checkbox" data-value="1"> Około 40%</label><br>
                 <label><input type="checkbox" data-value="-1"> Około 10%</label><br>
                 <label><input type="checkbox" data-value="-1"> Ponad 80%</label>
             </custom-checkbox-group>
     
-            <h3>Ile miesięcy trwa leczenie cytyzyną?</h3>
             <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="czas_terapii">
+                <h3>Ile miesięcy trwa leczenie cytyzyną? <span>(zaznacz 1 odpowiedź)</span></h3>
                 <label><input type="checkbox" data-value="1"> 1 miesiąc</label><br>
                 <label><input type="checkbox" data-value="-1"> 3 miesiące</label><br>
                 <label><input type="checkbox" data-value="-1"> 6 miesięcy</label>
             </custom-checkbox-group>
     
-            <h3>Jaki jest zakres cenowy kuracji cytyzyną?</h3>
             <custom-checkbox-group max="1" calc="max" data-group="conscious" data-name="koszt_terapii">
+                <h3>Jaki jest zakres cenowy kuracji cytyzyną? <span>(zaznacz 1 odpowiedź)</span></h3>
                 <label><input type="checkbox" data-value="1"> 50 - 150 zł</label><br>
                 <label><input type="checkbox" data-value="-1"> 200 - 400 zł</label><br>
                 <label><input type="checkbox" data-value="-1"> Powyżej 500 zł</label>
             </custom-checkbox-group>
     
-            <h3>Wybierz nazwy produktów zawierających cytyzynę</h3>
             <custom-checkbox-group max="3" calc="sum" data-group="conscious" data-name="leki_z_cytyzyną">
+                <h3>Wybierz nazwy produktów zawierających cytyzynę <span>(zaznacz max. 3 odpowiedzi)</span></h3>
                 <label><input type="checkbox" data-value="1"> Tabex</label><br>
                 <label><input type="checkbox" data-value="1"> Desmoxan</label><br>
                 <label><input type="checkbox" data-value="-1"> Champix</label><br>
@@ -154,7 +149,7 @@
         </div>
     </section>
         <!-- Przycisk przechodzenia dalej -->
-        <button id="send">Wyślij</button>    
+        <button id="send" style="display: none;">Wyślij</button>    
     <footer>
         <p>&copy; Damian Bezara 2025. Wszelkie prawa zastrzeżone.</p>
     </footer>
@@ -175,8 +170,12 @@ dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
 
                 if (answear == '1' || answear == '2') { // Dopiero potem sprawdzamy warunek na answear
                     document.getElementById("extraQuestions").style.display = "block";
+                    document.getElementById("send").style.display = "block";
                     this.style.display = "none"; // Ukrywa przycisk po kliknięciu
                 }
+            }
+            else{
+                alert("wypełnij wszystkie pola by przejść dalej.")
             }
         });
 
@@ -194,6 +193,12 @@ dIwpcc3l05D4M2QSLWkkZ8YOMpTivaa6TKHhSqQIc/rhFEDtVu6d9Mcc1UgszOOH
                     const record = {shadow: shadow, id: getHash()};
                     send_raw(record, 'cytyzynasurvey_v2');
                 }
+                else{
+                    alert("wypełnij wszystkie pola by wysłać dane ankiety.")
+                }
+            }
+            else{
+                alert("wypełnij wszystkie pola by wysłać dane ankiety.")
             }
         });        
 

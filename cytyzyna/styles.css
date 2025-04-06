@@ -20,6 +20,10 @@ rodo-consent{
     right: 5%;
 }
 
+span{
+    color: #45a049;
+}
+
 h1 {
     font-size: 2rem;
     margin: 0;
