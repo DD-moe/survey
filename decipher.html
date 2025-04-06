@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decription</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h2>RSA Encryption & Decryption</h2>
+    <label>Private Key:</label>
+    <textarea id="privateKey" rows="4" cols="50"></textarea>
+    <br>
+    <label>collumn schema:</label>
+    <textarea id="collumnSchema" rows="4" cols="50"></textarea>
+    <br>
+    <label>Operation:</label>
+    <input type="text" id="operation">
+    <br>
+    <label>Password:</label>
+    <input type="password" id="password">
+    <br>        
+    <button onclick="generateKeys()">Get data</button>
+    
+    <script>
+        // Globalna zmienna schema
+        let schema = {};
+
+        // Funkcja do załadowania schematu z textarea
+        function loadSchema() {
+            const textarea = document.getElementById("collumnSchema");
+            try {
+                const parsed = JSON.parse(textarea.value);
+                schema = parsed;
+                console.log("Schema loaded:", schema);
+            } catch (e) {
+                console.error("Błąd parsowania JSON:", e);
+            }
+        }
+
+        function validateObjectAgainstSchema(key, obj) {
+            if (!(key in schema)) {
+                console.warn(`Klucz '${key}' nie istnieje w schema.`);
+                return false;
+            }
+
+            const expectedKeys = Object.keys(schema[key]).sort();
+            const objectKeys = Object.keys(obj).sort();
+
+            const isValid = JSON.stringify(expectedKeys) === JSON.stringify(objectKeys);
+
+            if (!isValid) {
+                console.warn(`Nieprawidłowe klucze. Oczekiwano: [${expectedKeys}], otrzymano: [${objectKeys}]`);
+            }
+
+            return isValid;
+        }
+
+
+        function decryptText(iv, key, encryptedText) {
+            let decrypted = CryptoJS.AES.decrypt(encryptedText, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+            
+            return decrypted.toString(CryptoJS.enc.Utf8);
+        }
+
+        function decrypt(privateKey, encryptedText) {
+            let decryptor = new JSEncrypt();
+            decryptor.setPrivateKey(privateKey);
+            const decryptedText = decryptor.decrypt(encryptedText);
+            return decryptedText || "Decryption failed";
+        }
+        
+        function generateExcel(data) {
+            // Sortowanie obiektów na podstawie liczby kluczy, puste obiekty na koniec
+            data.sort((obj1, obj2) => {
+                return Object.keys(obj2).length - Object.keys(obj1).length;
+            });
+            
+            // Pobieranie kluczy z pierwszego obiektu
+            const keys = Object.keys(data[0]);
+
+            // Tworzenie wierszy danych (nagłówki + dane)
+            const rows = data.map(item => keys.map(key => item[key]));
+            rows.unshift(keys); // Dodanie nagłówków na początek
+
+            // Tworzenie arkusza (worksheet)
+            const ws = XLSX.utils.aoa_to_sheet(rows);
+
+            // Tworzenie skoroszytu (workbook)
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+            // Pobieranie pliku Excel
+            XLSX.writeFile(wb, "output.xlsx");
+        }
+
+        async function generateKeys(){
+            loadSchema();
+            const privateKeyPem = document.getElementById('privateKey').value;
+            const command = document.getElementById('operation').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch(`https://frog01-21435.wykr.es/tableanalytic`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({password: password, command: command})
+            });
+
+            const parsed = await response.json();
+            console.log(parsed);
+            if (response.ok) {
+                row = [];
+                for (let index = 0; index < parsed.message.length; index++) {
+                    try {
+                        const element = parsed.message[index];
+                        let decryptedData = {};
+                        let lightData = {};
+                        let restData = {};
+
+                        // Iterujemy po wszystkich kluczach obiektu
+                        Object.keys(element).forEach(key => {
+                            if (key.includes("shadow")) {
+                                const shadowed = JSON.parse(element[key]);
+                                if (shadowed && typeof shadowed === 'object') {
+                                    // Odszyfrowujemy tylko klucze zawierające "shadow" w nazwie
+                                    const decrypted = decrypt(privateKeyPem, shadowed.key);
+                                    const aesDecrypted = decryptText(shadowed.iv, decrypted, shadowed.data)
+                                    const collected = JSON.parse(aesDecrypted);
+                                    if (validateObjectAgainstSchema(key, collected)) {
+                                        decryptedData = {...decryptedData, ...collected};
+                                    }
+                                }
+                            }
+                            else if (key.includes("light")) {
+                                if (validateObjectAgainstSchema(key, element[key])) {
+                                    lightData= {...lightData, ...element[key]};
+                                }
+                            }
+                            else{
+                                restData[key] = element[key];
+                            }
+                        });
+                        // Łączymy odszyfrowane wartości z pozostałymi danymi
+                        row.push({ ...decryptedData, ...lightData, ...restData });
+                    } 
+                    catch (error) {
+                        console.warn(`Błąd w rekordzie nr ${index}:`, element);
+                        console.error(error);
+                    }
+                }
+                generateExcel(row);                
+            } else {
+                alert(parsed.error);
+            }
+        }
+    </script>
+</body>
+</html>

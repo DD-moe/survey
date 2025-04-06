@@ -1,0 +1,18 @@
+{
+    "shadow": {
+      "wiek": 0.5,
+      "płeć": "#000000",
+      "zamieszkanie": 10,
+      "praca": 10,
+      "kontrola1": 5,
+      "kontrola2": 5,
+      "znajomość_cytyzyny": 5,
+      "inne_terapie": 5,
+      "działania_nieporządane": 5,
+      "skuteczność": 5,
+      "czas_terapii": 5,
+      "koszt_terapii": 5,
+      "leki_z_cytyzyną": 5
+    }
+  }
+  
