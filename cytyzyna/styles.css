@@ -4,10 +4,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    width: 100%;
 }
 
 header {
     background-color: #4CAF50;
+    width: 100%;
 }
 
 #title{
@@ -40,7 +42,7 @@ section {
     background-color: white;
     margin: 20px auto;
     padding: 20px;
-    max-width: 800px;
+    width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
